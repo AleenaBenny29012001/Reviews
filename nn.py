@@ -33,6 +33,7 @@ import pickle
 saved_model = pickle.dumps(naivebayes)
 #load saved model
 s = pickle.loads(saved_model)
+import streamlit as st
 # Define the Streamlit app
 st.header('Demo')
 input_text = st.text_area("Please enter the text", value="")
