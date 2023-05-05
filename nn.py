@@ -33,6 +33,15 @@ import pickle
 saved_model = pickle.dumps(naivebayes)
 #load saved model
 s = pickle.loads(saved_model)
+# Define the Streamlit app
+st.header('Demo')
+input_text = st.text_area("Please enter the text", value="")
+if st.button("Check"):
+    input_text_transformed = vector.transform([input_text]).toarray()
+    prediction = naivebayes.predict(input_text_transformed)[0]
+    prediction_mapping = {0: 'Positive',1:'Negative'}
+    result = prediction_mapping[prediction]
+    st.write(f"Predicted category: {result}")
 review2 = ['The app is really good']
 vec = vector.transform(review2).toarray()
 
